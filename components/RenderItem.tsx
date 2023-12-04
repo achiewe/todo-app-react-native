@@ -10,13 +10,6 @@ export default function renderItem(): JSX.Element {
           <Text style={styles.DelTxt}> Delete</Text>
         </View>
       </View>
-      <View style={styles.ListItem}>
-        <Text style={styles.ItemName}>archi </Text>
-        <View style={styles.EditDel}>
-          <Text style={styles.EditTxt}> Edit</Text>
-          <Text style={styles.DelTxt}> Delete</Text>
-        </View>
-      </View>
     </View>
   );
 }
