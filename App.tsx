@@ -8,11 +8,13 @@
 import React from 'react';
 import {View, StyleSheet, Text} from 'react-native';
 import MainTodo from './components/MainTodo';
+import TaskList from './components/TaskList';
 
 function App(): JSX.Element {
   return (
     <View style={styles.MainContainer}>
       <MainTodo />
+      <TaskList />
     </View>
   );
 }
@@ -24,6 +26,7 @@ const styles = StyleSheet.create({
     display: 'flex',
     alignItems: 'center',
     flexDirection: 'column',
+    gap: 15,
   },
 });
 
