@@ -29,7 +29,7 @@ const styles = StyleSheet.create({
     padding: 20,
     width: 300,
     borderRadius: 10,
-    gap: 10,
+    gap: 25,
   },
 
   ListItem: {
