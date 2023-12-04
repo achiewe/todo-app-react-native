@@ -49,5 +49,10 @@ const styles = StyleSheet.create({
     paddingLeft: 20,
   },
 
-  button: {},
+  button: {
+    width: 300,
+    height: 40,
+    borderRadius: 10,
+    backgroundColor: 'green',
+  },
 });
