@@ -14,7 +14,8 @@ export default function MainTodo(): JSX.Element {
       <View style={styles.inputBut}>
         <TextInput
           style={styles.TaskInput}
-          placeholder="Enter task"></TextInput>
+          placeholder="Enter task"
+          placeholderTextColor={'#A6A6A6'}></TextInput>
         <TouchableOpacity style={styles.button}>
           <Text style={styles.taskText}> Add Task </Text>
         </TouchableOpacity>
@@ -45,10 +46,11 @@ const styles = StyleSheet.create({
 
   TaskInput: {
     width: 300,
-    borderColor: 'black',
+    borderColor: '#A6A6A6',
     borderWidth: 2,
     borderRadius: 10,
     paddingLeft: 20,
+    fontSize: 16,
   },
 
   button: {
