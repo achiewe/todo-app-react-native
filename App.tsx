@@ -6,7 +6,7 @@
  */
 
 import React from 'react';
-import {View, StyleSheet, Text} from 'react-native';
+import {View, StyleSheet} from 'react-native';
 import MainTodo from './components/MainTodo';
 import TaskList from './components/TaskList';
 
