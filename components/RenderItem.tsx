@@ -5,7 +5,10 @@ export default function renderItem(): JSX.Element {
     <View style={styles.ListContainer}>
       <View style={styles.ListItem}>
         <Text style={styles.ItemName}>archi </Text>
-        <View style={styles.EditDel}></View>
+        <View style={styles.EditDel}>
+          <Text style={styles.EditTxt}> Edit</Text>
+          <Text style={styles.DelTxt}> Delete</Text>
+        </View>
       </View>
     </View>
   );
@@ -39,7 +42,19 @@ const styles = StyleSheet.create({
   EditDel: {
     display: 'flex',
     flexDirection: 'row',
-    gap: 5,
+    gap: 15,
     alignItems: 'center',
+  },
+
+  EditTxt: {
+    fontSize: 16,
+    color: 'green',
+    fontWeight: 'bold',
+  },
+
+  DelTxt: {
+    fontSize: 16,
+    color: 'red',
+    fontWeight: 'bold',
   },
 });
