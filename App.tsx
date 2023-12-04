@@ -8,13 +8,13 @@
 import React from 'react';
 import {View, StyleSheet} from 'react-native';
 import MainTodo from './components/MainTodo';
-import TaskList from './components/TaskList';
+import RenderItem from './components/RenderItem';
 
 function App(): JSX.Element {
   return (
     <View style={styles.MainContainer}>
       <MainTodo />
-      <TaskList />
+      <RenderItem />
     </View>
   );
 }
