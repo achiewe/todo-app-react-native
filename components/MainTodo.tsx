@@ -20,6 +20,8 @@ export default function MainTodo(): JSX.Element {
     inputValue;
   };
 
+  console.log(inputValue);
+
   return (
     <View style={styles.container}>
       <Text style={styles.text}>ToDo app</Text>
