@@ -16,6 +16,8 @@ export default function MainTodo(): JSX.Element {
   );
   const dispatch = useDispatch();
 
+  const handleSubmit = () => {};
+
   return (
     <View style={styles.container}>
       <Text style={styles.text}>ToDo app</Text>
