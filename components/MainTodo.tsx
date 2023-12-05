@@ -16,7 +16,9 @@ export default function MainTodo(): JSX.Element {
   );
   const dispatch = useDispatch();
 
-  const handleSubmit = () => {};
+  const handleSubmit = () => {
+    inputValue;
+  };
 
   return (
     <View style={styles.container}>
@@ -27,7 +29,7 @@ export default function MainTodo(): JSX.Element {
           style={styles.TaskInput}
           placeholder="Enter task"
           placeholderTextColor={'#A6A6A6'}></TextInput>
-        <TouchableOpacity style={styles.button}>
+        <TouchableOpacity style={styles.button} onPress={handleSubmit}>
           <Text style={styles.taskText}> Add Task </Text>
         </TouchableOpacity>
       </View>
