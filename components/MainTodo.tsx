@@ -16,8 +16,6 @@ export default function MainTodo(): JSX.Element {
   );
   const dispatch = useDispatch();
 
-  console.log(inputValue);
-
   return (
     <View style={styles.container}>
       <Text style={styles.text}>ToDo app</Text>
