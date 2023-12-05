@@ -1,13 +1,30 @@
-import {StyleSheet, Text, View} from 'react-native';
+import {StyleSheet, Text, View, TouchableOpacity, Image} from 'react-native';
+import BouncyCheckbox from 'react-native-bouncy-checkbox';
 
 export default function renderItem(): JSX.Element {
   return (
     <View style={styles.ListContainer}>
       <View style={styles.ListItem}>
-        <Text style={styles.ItemName}>archi </Text>
+        <View style={styles.ckeckView}>
+          <BouncyCheckbox
+            onPress={(isChecked: boolean) => {
+              isChecked = true;
+            }}
+            fillColor="green"
+            size={27}
+          />
+          <Text style={styles.ItemName}>archi </Text>
+        </View>
         <View style={styles.EditDel}>
-          <Text style={styles.EditTxt}> Edit</Text>
-          <Text style={styles.DelTxt}> Delete</Text>
+          <TouchableOpacity>
+            <Text style={styles.EditTxt}> Edit</Text>
+          </TouchableOpacity>
+          <TouchableOpacity>
+            <Image
+              style={styles.delImg}
+              source={require('../assets/delete.png')}
+            />
+          </TouchableOpacity>
         </View>
       </View>
     </View>
@@ -23,6 +40,13 @@ const styles = StyleSheet.create({
     width: 300,
     borderRadius: 10,
     gap: 25,
+  },
+
+  ckeckView: {
+    display: 'flex',
+    flexDirection: 'row',
+    gap: 5,
+    alignItems: 'center',
   },
 
   ListItem: {
@@ -55,5 +79,10 @@ const styles = StyleSheet.create({
     fontSize: 16,
     color: 'red',
     fontWeight: 'bold',
+  },
+
+  delImg: {
+    width: 20,
+    height: 20,
   },
 });
