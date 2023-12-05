@@ -9,13 +9,17 @@ import React from 'react';
 import {View, StyleSheet} from 'react-native';
 import MainTodo from './components/MainTodo';
 import RenderItem from './components/RenderItem';
+import {Provider} from 'react-redux';
+import store from './features/store';
 
 function App(): JSX.Element {
   return (
-    <View style={styles.MainContainer}>
-      <MainTodo />
-      <RenderItem />
-    </View>
+    <Provider store={store}>
+      <View style={styles.MainContainer}>
+        <MainTodo />
+        <RenderItem />
+      </View>
+    </Provider>
   );
 }
 
