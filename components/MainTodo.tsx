@@ -9,6 +9,12 @@ import React from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import {Rootstate} from '../features/store';
 import {setSaveValue} from '../features/SaveInputValue';
+import axios from 'axios';
+
+interface TodoInterface {
+  title: string;
+  succeed: boolean;
+}
 
 export default function MainTodo(): JSX.Element {
   const inputValue = useSelector(
@@ -16,11 +22,14 @@ export default function MainTodo(): JSX.Element {
   );
   const dispatch = useDispatch();
 
-  const handleSubmit = () => {
-    inputValue;
+  const addTodo = async () => {
+    try {
+      const response = await axios.get('http://localhost:3001/tasks');
+      console.log(response.data);
+    } catch (error) {
+      console.log(error);
+    }
   };
-
-  console.log(inputValue);
 
   return (
     <View style={styles.container}>
@@ -31,7 +40,7 @@ export default function MainTodo(): JSX.Element {
           style={styles.TaskInput}
           placeholder="Enter task"
           placeholderTextColor={'#A6A6A6'}></TextInput>
-        <TouchableOpacity style={styles.button} onPress={handleSubmit}>
+        <TouchableOpacity style={styles.button} onPress={addTodo}>
           <Text style={styles.taskText}> Add Task </Text>
         </TouchableOpacity>
       </View>
