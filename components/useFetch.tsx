@@ -17,7 +17,7 @@ export default function useFetch(url: string) {
 
   useEffect(() => {
     getTask();
-  }, [url]);
+  });
 
-  return {saveInfo};
+  return {saveInfo, getTask};
 }
