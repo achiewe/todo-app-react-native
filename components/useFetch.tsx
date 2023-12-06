@@ -1,17 +1,23 @@
 import axios from 'axios';
 import {useEffect, useState} from 'react';
+import {dataProps} from '../types';
 
-export default function useFetch() {
-  const [saveInfo, setSaveInfo] = useState<[]>([]);
-
-  console.log(saveInfo);
+export default function useFetch(url: string) {
+  const [saveInfo, setSaveInfo] = useState<dataProps[] | []>([]);
 
   const getTask = async () => {
-    const response = await axios.get('http://192.168.0.101:3001/tasks');
-    const data = response.data;
-    setSaveInfo(data);
+    try {
+      const response = await axios.get(url);
+      const data = response.data; // Assuming response.data is an array of dataProps
+      setSaveInfo(data);
+    } catch (error) {
+      console.error('Error fetching data:', error);
+    }
   };
+
   useEffect(() => {
     getTask();
-  }, []);
+  }, [url]);
+
+  return {saveInfo}; // Change from {setData} to {data}
 }

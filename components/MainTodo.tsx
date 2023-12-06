@@ -10,11 +10,7 @@ import {useDispatch, useSelector} from 'react-redux';
 import {Rootstate} from '../features/store';
 import {setSaveValue} from '../features/SaveInputValue';
 import axios from 'axios';
-
-interface TodoInterface {
-  title: string;
-  succeed: boolean;
-}
+import {dataProps} from '../types';
 
 export default function MainTodo(): JSX.Element {
   const inputValue = useSelector(
@@ -24,10 +20,13 @@ export default function MainTodo(): JSX.Element {
 
   const addTodo = async () => {
     try {
-      const response = await axios.post('http://192.168.0.101:3001/postTask', {
-        title: inputValue,
-        succeed: false,
-      });
+      const response = await axios.post<dataProps[]>(
+        'http://192.168.0.101:3001/postTask',
+        {
+          title: inputValue,
+          succeed: false,
+        },
+      );
     } catch (error) {
       console.log(error);
     }
