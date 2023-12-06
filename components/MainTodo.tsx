@@ -25,7 +25,7 @@ export default function MainTodo(): JSX.Element {
   const addTodo = async () => {
     try {
       const response = await axios.post('http://192.168.0.101:3001/postTask', {
-        title: 'levan',
+        title: inputValue,
         succeed: false,
       });
     } catch (error) {
