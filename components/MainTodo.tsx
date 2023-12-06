@@ -11,6 +11,7 @@ import {Rootstate} from '../features/store';
 import {setSaveValue} from '../features/SaveInputValue';
 import axios from 'axios';
 import {dataProps} from '../types';
+import useFetch from './useFetch';
 
 export default function MainTodo(): JSX.Element {
   const inputValue = useSelector(
@@ -27,6 +28,7 @@ export default function MainTodo(): JSX.Element {
           succeed: false,
         },
       );
+      useFetch('http://192.168.0.101:3001/tasks');
     } catch (error) {
       console.log(error);
     }
