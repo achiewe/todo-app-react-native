@@ -1,15 +1,7 @@
-import axios from 'axios';
-import {useEffect} from 'react';
 import {StyleSheet, Text, View, TouchableOpacity, Image} from 'react-native';
 import BouncyCheckbox from 'react-native-bouncy-checkbox';
 
 export default function renderItem(): JSX.Element {
-  useEffect(() => {
-    const getTask = async () => {
-      const response = await axios.get('http://192.168.0.101:3001/tasks');
-    };
-  }, []);
-
   return (
     <View style={styles.ListContainer}>
       <View style={styles.ListItem}>
