@@ -28,15 +28,26 @@ export default function renderItem(): JSX.Element {
     }
   };
 
+  const propertyChange = async (id: string, succeed: boolean) => {
+    try {
+      await axios.put(`http://192.168.0.101:3001/tasks/${id}`, {succeed});
+      // Optionally, you can call getTask() here if needed
+      getTask();
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <View style={styles.ListContainer}>
-      {saveInfo.map((item, index) => (
-        <View style={styles.ListItem} key={index}>
+      {saveInfo.map(item => (
+        <View style={styles.ListItem} key={item._id}>
           <View style={styles.ckeckView}>
             <BouncyCheckbox
               isChecked={item.succeed}
-              onPress={(isChecked: boolean) => {
-                isChecked = !isChecked;
+              onPress={() => {
+                propertyChange(item._id, !item.succeed);
+                console.log(item.succeed); // Assuming item has an 'id' property
               }}
               fillColor="green"
               size={27}
