@@ -7,7 +7,9 @@ import {Rootstate} from '../features/store';
 
 export default function renderItem(): JSX.Element {
   const {saveInfo} = useFetch('http://192.168.0.101:3001/tasks');
-
+  const inputValue = useSelector(
+    (store: Rootstate) => store.saveValue.saveValue,
+  );
   const {getTask} = useFetch('http://192.168.0.101:3001/tasks');
 
   const propertyChange = async (id: string, succeed: boolean) => {
@@ -34,35 +36,37 @@ export default function renderItem(): JSX.Element {
 
   return (
     <View style={styles.ListContainer}>
-      {saveInfo.map(item => (
-        <View style={styles.ListItem} key={item._id}>
-          <View style={styles.ckeckView}>
-            <BouncyCheckbox
-              isChecked={item.succeed}
-              onPress={() => {
-                propertyChange(item._id, !item.succeed);
-              }}
-              fillColor="green"
-              size={27}
-            />
-            <Text style={styles.ItemName}>{item.title}</Text>
-          </View>
-          <View style={styles.EditDel}>
-            <TouchableOpacity>
-              <Text style={styles.EditTxt}> Edit</Text>
-            </TouchableOpacity>
-            <TouchableOpacity
-              onPress={() => {
-                deleteItem(item._id);
-              }}>
-              <Image
-                style={styles.delImg}
-                source={require('../assets/delete.png')}
+      {saveInfo &&
+        Array.isArray(saveInfo) &&
+        saveInfo.map(item => (
+          <View style={styles.ListItem} key={item._id}>
+            <View style={styles.ckeckView}>
+              <BouncyCheckbox
+                isChecked={item.succeed}
+                onPress={() => {
+                  propertyChange(item._id, !item.succeed);
+                }}
+                fillColor="green"
+                size={27}
               />
-            </TouchableOpacity>
+              <Text style={styles.ItemName}>{item.title}</Text>
+            </View>
+            <View style={styles.EditDel}>
+              <TouchableOpacity>
+                <Text style={styles.EditTxt}> Edit</Text>
+              </TouchableOpacity>
+              <TouchableOpacity
+                onPress={() => {
+                  deleteItem(item._id);
+                }}>
+                <Image
+                  style={styles.delImg}
+                  source={require('../assets/delete.png')}
+                />
+              </TouchableOpacity>
+            </View>
           </View>
-        </View>
-      ))}
+        ))}
     </View>
   );
 }
