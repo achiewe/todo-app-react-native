@@ -33,6 +33,9 @@ export default function renderItem(): JSX.Element {
       await axios.put(`http://192.168.0.101:3001/tasks/${id}`, {succeed});
       // Optionally, you can call getTask() here if needed
       getTask();
+
+      // Log the updated value after the API call is complete
+      console.log(!succeed);
     } catch (error) {
       console.log(error);
     }
@@ -47,7 +50,6 @@ export default function renderItem(): JSX.Element {
               isChecked={item.succeed}
               onPress={() => {
                 propertyChange(item._id, !item.succeed);
-                console.log(item.succeed); // Assuming item has an 'id' property
               }}
               fillColor="green"
               size={27}
