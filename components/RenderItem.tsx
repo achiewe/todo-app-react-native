@@ -2,7 +2,6 @@ import {StyleSheet, Text, View, TouchableOpacity, Image} from 'react-native';
 import BouncyCheckbox from 'react-native-bouncy-checkbox';
 import useFetch from './useFetch';
 import axios from 'axios';
-import {dataProps} from '../types';
 import {useSelector} from 'react-redux';
 import {Rootstate} from '../features/store';
 
@@ -12,21 +11,6 @@ export default function renderItem(): JSX.Element {
     (store: Rootstate) => store.saveValue.saveValue,
   );
   const {getTask} = useFetch('http://192.168.0.101:3001/tasks');
-
-  const addTodo = async () => {
-    try {
-      const response = await axios.post<dataProps[]>(
-        'http://192.168.0.101:3001/postTask',
-        {
-          title: inputValue,
-          succeed: false,
-        },
-      );
-      getTask();
-    } catch (error) {
-      console.log(error);
-    }
-  };
 
   const propertyChange = async (id: string, succeed: boolean) => {
     try {
