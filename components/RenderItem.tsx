@@ -2,14 +2,10 @@ import {StyleSheet, Text, View, TouchableOpacity, Image} from 'react-native';
 import BouncyCheckbox from 'react-native-bouncy-checkbox';
 import useFetch from './useFetch';
 import axios from 'axios';
-import {useSelector} from 'react-redux';
-import {Rootstate} from '../features/store';
 
 export default function renderItem(): JSX.Element {
   const {saveInfo} = useFetch('http://192.168.0.101:3001/tasks');
-  const inputValue = useSelector(
-    (store: Rootstate) => store.saveValue.saveValue,
-  );
+
   const {getTask} = useFetch('http://192.168.0.101:3001/tasks');
 
   const propertyChange = async (id: string, succeed: boolean) => {
