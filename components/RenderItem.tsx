@@ -7,9 +7,7 @@ import {Rootstate} from '../features/store';
 
 export default function renderItem(): JSX.Element {
   const {saveInfo} = useFetch('http://192.168.0.101:3001/tasks');
-  const inputValue = useSelector(
-    (store: Rootstate) => store.saveValue.saveValue,
-  );
+
   const {getTask} = useFetch('http://192.168.0.101:3001/tasks');
 
   const propertyChange = async (id: string, succeed: boolean) => {
