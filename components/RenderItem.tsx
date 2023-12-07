@@ -52,7 +52,10 @@ export default function renderItem(): JSX.Element {
             <TouchableOpacity>
               <Text style={styles.EditTxt}> Edit</Text>
             </TouchableOpacity>
-            <TouchableOpacity>
+            <TouchableOpacity
+              onPress={() => {
+                deleteItem(item._id);
+              }}>
               <Image
                 style={styles.delImg}
                 source={require('../assets/delete.png')}
