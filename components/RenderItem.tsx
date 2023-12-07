@@ -27,7 +27,6 @@ export default function renderItem(): JSX.Element {
 
   const deleteItem = async (id: string) => {
     try {
-      console.log('genaa');
       await axios.delete(`http://192.168.0.101:3001/tasks/${id}`);
       getTask();
     } catch (error) {
