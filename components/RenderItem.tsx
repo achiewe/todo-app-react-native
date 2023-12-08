@@ -21,6 +21,21 @@ export default function renderItem(): JSX.Element {
     }
   };
 
+  const addOrUpdateTodo = async () => {
+    try {
+      if (editMode) {
+        await axios.put(`http://192.168.0.101:3001/tasks/${editedTaskId}`, {
+          title: inputValue,
+        });
+        setEditMode(false);
+      } else {
+        await axios.post<dataProps[]>('http://192.168.0.101:3001/postTask', {
+          title: inputValue,
+          succeed: false,
+        });
+      }
+    }
+
   const deleteItem = async (id: string) => {
     try {
       await axios.delete(`http://192.168.0.101:3001/tasks/${id}`);
