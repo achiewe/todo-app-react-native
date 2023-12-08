@@ -34,7 +34,14 @@ export default function renderItem(): JSX.Element {
           succeed: false,
         });
       }
+
+      getTask();
+      dispatch(setSaveValue(''));
+    } catch (error) {
+      console.log(error);
     }
+
+
 
   const deleteItem = async (id: string) => {
     try {
