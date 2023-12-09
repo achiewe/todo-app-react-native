@@ -29,6 +29,7 @@ export default function MainTodo(): JSX.Element {
           succeed: false,
         },
       );
+      setSaveValue('');
       getTask();
     } catch (error) {
       console.log(error);
@@ -41,6 +42,7 @@ export default function MainTodo(): JSX.Element {
       <View style={styles.inputBut}>
         <TextInput
           onChangeText={text => dispatch(setSaveValue(text))}
+          value={inputValue}
           style={styles.TaskInput}
           placeholder="Enter task"
           placeholderTextColor={'#A6A6A6'}></TextInput>
