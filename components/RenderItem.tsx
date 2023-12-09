@@ -16,6 +16,7 @@ export default function renderItem(): JSX.Element {
 
       // Log the updated value after the API call is complete
       console.log(!succeed);
+      console.log('h1');
     } catch (error) {
       console.log(error);
     }
