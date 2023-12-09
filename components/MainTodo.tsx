@@ -30,6 +30,7 @@ export default function MainTodo(): JSX.Element {
         },
       );
       getTask();
+      setSaveValue('');
     } catch (error) {
       console.log(error);
     }
