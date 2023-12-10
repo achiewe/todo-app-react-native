@@ -20,7 +20,13 @@ export default function MainTodo(): JSX.Element {
   const dispatch = useDispatch();
   const {regetTask} = useFetch('http://192.168.0.101:3001/tasks');
 
+  const editingText = useSelector(
+    (store: Rootstate) => store.editingText.editingText,
+  );
+
   const addTodo = async () => {
+    if (editingText) {
+    }
     try {
       const response = await axios.post<dataProps[]>(
         'http://192.168.0.101:3001/postTask',
@@ -29,7 +35,7 @@ export default function MainTodo(): JSX.Element {
           succeed: false,
         },
       );
-      setSaveValue('');
+      dispatch(setSaveValue(''));
       regetTask();
     } catch (error) {
       console.log(error);
