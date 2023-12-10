@@ -31,6 +31,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     flexDirection: 'column',
     gap: 15,
+    paddingTop: 50,
   },
 });
 
