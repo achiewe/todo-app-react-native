@@ -4,7 +4,7 @@ import useFetch from './useFetch';
 import axios from 'axios';
 import {setSaveValue} from '../features/SaveInputValue';
 import {useDispatch} from 'react-redux';
-import {setEditingText} from '../features/EditableInput';
+import {setEditingText} from '../features/EditingText';
 
 export default function renderItem(): JSX.Element {
   const {saveInfo, regetTask, setSaveInfo} = useFetch(

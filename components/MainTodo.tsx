@@ -24,21 +24,38 @@ export default function MainTodo(): JSX.Element {
     (store: Rootstate) => store.editingText.editingText,
   );
 
+  const editableInput = useSelector((store: Rootstate) => store.edit.edit);
+
+  const title = editableInput[0]?.title;
+
   const addTodo = async () => {
     if (editingText) {
-    }
-    try {
-      const response = await axios.post<dataProps[]>(
-        'http://192.168.0.101:3001/postTask',
-        {
-          title: inputValue,
-          succeed: false,
-        },
-      );
-      dispatch(setSaveValue(''));
-      regetTask();
-    } catch (error) {
-      console.log(error);
+      try {
+        await axios.put(
+          `http://192.168.0.101:3001/tasks/title/${editableInput[0]._id}`,
+          {title},
+        );
+        // Optionally, you can call getTask() here if needed
+        regetTask();
+
+        // Log the updated value after the API call is complete
+      } catch (error) {
+        console.log(error);
+      }
+    } else {
+      try {
+        const response = await axios.post<dataProps[]>(
+          'http://192.168.0.101:3001/postTask',
+          {
+            title: inputValue,
+            succeed: false,
+          },
+        );
+        dispatch(setSaveValue(''));
+        regetTask();
+      } catch (error) {
+        console.log(error);
+      }
     }
   };
 

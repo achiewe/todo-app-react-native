@@ -1,11 +1,11 @@
 import {createSlice, PayloadAction} from '@reduxjs/toolkit';
 import {dataProps} from '../types';
 
-export interface EditProps {
+export interface EditArrProps {
   edit: dataProps[];
 }
 
-const initialState: EditProps = {
+const initialState: EditArrProps = {
   edit: [],
 };
 

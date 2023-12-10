@@ -1,7 +1,7 @@
 import {configureStore} from '@reduxjs/toolkit';
 import SaveInputValue, {ValueProps} from './SaveInputValue';
-import EditableInput, {EditProps} from './EditableInput';
-import EditingText from './EditingText';
+import EditableInput, {EditArrProps} from './EditableInput';
+import EditingText, {EditProps} from './EditingText';
 
 const store = configureStore({
   reducer: {
@@ -13,7 +13,7 @@ const store = configureStore({
 
 export type Rootstate = {
   saveValue: ValueProps;
-  edit: EditProps;
+  edit: EditArrProps;
   editingText: EditProps;
 };
 
