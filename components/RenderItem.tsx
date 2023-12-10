@@ -4,9 +4,9 @@ import useFetch from './useFetch';
 import axios from 'axios';
 
 export default function renderItem(): JSX.Element {
-  const {saveInfo} = useFetch('http://192.168.0.101:3001/tasks');
-
-  const {regetTask} = useFetch('http://192.168.0.101:3001/tasks');
+  const {saveInfo, regetTask, setSaveInfo} = useFetch(
+    'http://192.168.0.101:3001/tasks',
+  );
 
   const propertyChange = async (id: string, succeed: boolean) => {
     try {
@@ -30,6 +30,12 @@ export default function renderItem(): JSX.Element {
     }
   };
 
+  const handleEdit = (id: string) => {
+    const editText = saveInfo.filter(item => item._id === id);
+    const currentData = saveInfo.filter(item => item._id !== id);
+    setSaveInfo(currentData);
+  };
+
   return (
     <View style={styles.ListContainer}>
       {saveInfo &&
@@ -48,7 +54,10 @@ export default function renderItem(): JSX.Element {
               <Text style={styles.ItemName}>{item.title}</Text>
             </View>
             <View style={styles.EditDel}>
-              <TouchableOpacity>
+              <TouchableOpacity
+                onPress={() => {
+                  handleEdit(item._id);
+                }}>
                 <Text style={styles.EditTxt}> Edit</Text>
               </TouchableOpacity>
               <TouchableOpacity

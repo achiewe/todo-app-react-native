@@ -27,5 +27,5 @@ export default function useFetch(url: string) {
     }
   }, [progressFunc]);
 
-  return {saveInfo, regetTask: () => setProgressFunc(true)};
+  return {saveInfo, regetTask: () => setProgressFunc(true), setSaveInfo};
 }
