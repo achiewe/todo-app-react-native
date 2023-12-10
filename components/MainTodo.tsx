@@ -18,7 +18,7 @@ export default function MainTodo(): JSX.Element {
     (store: Rootstate) => store.saveValue.saveValue,
   );
   const dispatch = useDispatch();
-  const {getTask} = useFetch('http://192.168.0.101:3001/tasks');
+  const {regetTask} = useFetch('http://192.168.0.101:3001/tasks');
 
   const addTodo = async () => {
     try {
@@ -30,7 +30,7 @@ export default function MainTodo(): JSX.Element {
         },
       );
       setSaveValue('');
-      getTask();
+      regetTask();
     } catch (error) {
       console.log(error);
     }

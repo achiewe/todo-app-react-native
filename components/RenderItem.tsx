@@ -6,13 +6,13 @@ import axios from 'axios';
 export default function renderItem(): JSX.Element {
   const {saveInfo} = useFetch('http://192.168.0.101:3001/tasks');
 
-  const {getTask} = useFetch('http://192.168.0.101:3001/tasks');
+  const {regetTask} = useFetch('http://192.168.0.101:3001/tasks');
 
   const propertyChange = async (id: string, succeed: boolean) => {
     try {
       await axios.put(`http://192.168.0.101:3001/tasks/${id}`, {succeed});
       // Optionally, you can call getTask() here if needed
-      getTask();
+      regetTask();
 
       // Log the updated value after the API call is complete
       console.log(!succeed);
@@ -24,7 +24,7 @@ export default function renderItem(): JSX.Element {
   const deleteItem = async (id: string) => {
     try {
       await axios.delete(`http://192.168.0.101:3001/tasks/${id}`);
-      getTask();
+      regetTask();
     } catch (error) {
       console.log(error);
     }
