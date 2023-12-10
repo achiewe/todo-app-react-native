@@ -21,7 +21,11 @@ export default function useFetch(url: string) {
   }, []);
 
   useEffect(() => {
-    getTask();
+    console.log('aeeeee');
+    if (progressFunc) {
+      getTask();
+      setProgressFunc(false); // Reset the flag after fetching
+    }
   }, [progressFunc]);
 
   return {saveInfo, regetTask: () => setProgressFunc(true)};
