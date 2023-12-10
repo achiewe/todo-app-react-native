@@ -5,6 +5,7 @@ import axios from 'axios';
 import {setSaveValue} from '../features/SaveInputValue';
 import {useDispatch} from 'react-redux';
 import {setEditingText} from '../features/EditingText';
+import {setEdit} from '../features/EditableInput';
 
 export default function renderItem(): JSX.Element {
   const {saveInfo, regetTask, setSaveInfo} = useFetch(
@@ -39,6 +40,7 @@ export default function renderItem(): JSX.Element {
     const editText = saveInfo.filter(item => item._id === id);
     dispatch(setSaveValue(editText[0].title));
     dispatch(setEditingText(true));
+    dispatch(setEdit(editText));
     const currentData = saveInfo.filter(item => item._id !== id);
     setSaveInfo(currentData);
   };

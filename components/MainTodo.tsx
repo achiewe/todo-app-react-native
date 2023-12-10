@@ -28,16 +28,18 @@ export default function MainTodo(): JSX.Element {
 
   const title = inputValue;
 
+  console.log(editableInput);
+
   const addTodo = async () => {
     if (editingText) {
       try {
         await axios.put(
-          `http://192.168.0.101:3001/tasks/title/${editableInput[0]._id}`,
+          `http://192.168.0.101:3001/tasks/title/${editableInput[0]?._id}`,
           {title},
         );
         // Optionally, you can call getTask() here if needed
+        dispatch(setSaveValue(''));
         regetTask();
-
         // Log the updated value after the API call is complete
       } catch (error) {
         console.log(error);
