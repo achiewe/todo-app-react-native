@@ -4,6 +4,7 @@ import {dataProps} from '../types';
 
 export default function useFetch(url: string) {
   const [saveInfo, setSaveInfo] = useState<dataProps[] | []>([]);
+  const [progressFunc, setProgressFunc] = useState<boolean>(false);
 
   const getTask = async () => {
     try {
@@ -17,7 +18,11 @@ export default function useFetch(url: string) {
 
   useEffect(() => {
     getTask();
-  });
+  }, []);
+
+  useEffect(() => {
+    getTask();
+  }, [progressFunc]);
 
   return {saveInfo, getTask};
 }
