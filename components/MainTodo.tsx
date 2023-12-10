@@ -26,7 +26,7 @@ export default function MainTodo(): JSX.Element {
 
   const editableInput = useSelector((store: Rootstate) => store.edit.edit);
 
-  const title = editableInput[0]?.title;
+  const title = inputValue;
 
   const addTodo = async () => {
     if (editingText) {
