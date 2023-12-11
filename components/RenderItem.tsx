@@ -14,6 +14,7 @@ export default function renderItem(): JSX.Element {
 
   const dispatch = useDispatch();
 
+  // function for change title of the item
   const propertyChange = async (id: string, succeed: boolean) => {
     try {
       await axios.put(`http://192.168.0.101:3001/tasks/${id}`, {succeed});
