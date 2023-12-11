@@ -36,6 +36,7 @@ export default function renderItem(): JSX.Element {
     }
   };
 
+  // function for edit the task
   const handleEdit = (id: string) => {
     const editText = saveInfo.filter(item => item._id === id);
     dispatch(setSaveValue(editText[0].title));
