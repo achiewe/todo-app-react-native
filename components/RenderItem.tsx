@@ -27,6 +27,7 @@ export default function renderItem(): JSX.Element {
     }
   };
 
+  // function for delete task
   const deleteItem = async (id: string) => {
     try {
       await axios.delete(`http://192.168.0.101:3001/tasks/${id}`);
