@@ -6,6 +6,7 @@ export default function useFetch(url: string) {
   const [saveInfo, setSaveInfo] = useState<dataProps[] | []>([]);
   const [progressFunc, setProgressFunc] = useState<boolean>(false);
 
+  // function for update info and take data from backend and show in the frontend side
   const getTask = async () => {
     try {
       const response = await axios.get(url);
