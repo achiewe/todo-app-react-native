@@ -30,7 +30,7 @@ export default function MainTodo(): JSX.Element {
 
   console.log(editableInput);
 
-  // function for edit title of the task
+  // function for edit title of the task add update it
   const addTodo = async () => {
     if (editingText) {
       try {
