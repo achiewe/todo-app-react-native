@@ -18,6 +18,8 @@ export default function MainTodo(): JSX.Element {
     (store: Rootstate) => store.saveValue.saveValue,
   );
   const dispatch = useDispatch();
+
+  // take regretTask from useFetch to use it here
   const {regetTask} = useFetch('http://192.168.0.101:3001/tasks');
 
   const editingText = useSelector(
