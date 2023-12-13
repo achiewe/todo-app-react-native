@@ -10,6 +10,7 @@ const initialState: ValueProps = {
   saveValue: '',
 };
 
+// set state function
 const SaveInputValue = createSlice({
   name: 'saveValue',
   initialState,
