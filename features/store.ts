@@ -12,6 +12,7 @@ const store = configureStore({
   },
 });
 
+// state type
 export type Rootstate = {
   saveValue: ValueProps;
   edit: EditArrProps;
