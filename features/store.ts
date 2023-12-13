@@ -3,6 +3,7 @@ import SaveInputValue, {ValueProps} from './SaveInputValue';
 import EditableInput, {EditArrProps} from './EditableInput';
 import EditingText, {EditProps} from './EditingText';
 
+// store for use the states in the project
 const store = configureStore({
   reducer: {
     saveValue: SaveInputValue,
