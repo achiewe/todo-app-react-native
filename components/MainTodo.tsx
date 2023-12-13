@@ -12,6 +12,7 @@ import {setSaveValue} from '../features/SaveInputValue';
 import axios from 'axios';
 import {dataProps} from '../types';
 import useFetch from './useFetch';
+import {setEditingText} from '../features/EditingText';
 
 export default function MainTodo(): JSX.Element {
   const inputValue = useSelector(
@@ -42,7 +43,9 @@ export default function MainTodo(): JSX.Element {
         );
         // Optionally, you can call getTask() here if needed
         dispatch(setSaveValue(''));
+        dispatch(setEditingText(false));
         regetTask();
+
         // Log the updated value after the API call is complete
       } catch (error) {
         console.log(error);
