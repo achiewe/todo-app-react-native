@@ -5,6 +5,7 @@ export interface ValueProps {
   saveValue: string;
 }
 
+// redux state value
 const initialState: ValueProps = {
   saveValue: '',
 };
