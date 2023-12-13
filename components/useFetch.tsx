@@ -10,7 +10,9 @@ export default function useFetch(url: string) {
   const getTask = async () => {
     try {
       const response = await axios.get(url);
+
       const data = response.data;
+      console.log(data);
       setSaveInfo(data);
     } catch (error) {
       console.error('Error fetching data:', error);

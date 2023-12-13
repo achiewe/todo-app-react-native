@@ -12,7 +12,6 @@ import {setSaveValue} from '../features/SaveInputValue';
 import axios from 'axios';
 import {dataProps} from '../types';
 import useFetch from './useFetch';
-import {setEditingText} from '../features/EditingText';
 
 export default function MainTodo(): JSX.Element {
   const inputValue = useSelector(
@@ -21,7 +20,7 @@ export default function MainTodo(): JSX.Element {
   const dispatch = useDispatch();
 
   // take regretTask from useFetch to use it here
-  const {regetTask} = useFetch('http://192.168.0.101:3001/tasks');
+  const {regetTask} = useFetch('http://192.168.0.104:3001/tasks');
 
   const editingText = useSelector(
     (store: Rootstate) => store.editingText.editingText,
@@ -38,12 +37,11 @@ export default function MainTodo(): JSX.Element {
     if (editingText) {
       try {
         await axios.put(
-          `http://192.168.0.101:3001/tasks/title/${editableInput[0]?._id}`,
+          `http://192.168.0.104:3001/tasks/title/${editableInput[0]?._id}`,
           {title},
         );
         // Optionally, you can call getTask() here if needed
         dispatch(setSaveValue(''));
-        dispatch(setEditingText(false));
         regetTask();
 
         // Log the updated value after the API call is complete
@@ -53,7 +51,7 @@ export default function MainTodo(): JSX.Element {
     } else {
       try {
         const response = await axios.post<dataProps[]>(
-          'http://192.168.0.101:3001/postTask',
+          'http://192.168.0.104:3001/postTask',
           {
             title: inputValue,
             succeed: false,

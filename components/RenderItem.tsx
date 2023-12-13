@@ -9,7 +9,7 @@ import {setEdit} from '../features/EditableInput';
 
 export default function renderItem(): JSX.Element {
   const {saveInfo, regetTask, setSaveInfo} = useFetch(
-    'http://192.168.0.101:3001/tasks',
+    'http://192.168.0.104:3001/tasks',
   );
 
   const dispatch = useDispatch();
@@ -17,7 +17,7 @@ export default function renderItem(): JSX.Element {
   // function for change title of the item
   const propertyChange = async (id: string, succeed: boolean) => {
     try {
-      await axios.put(`http://192.168.0.101:3001/tasks/${id}`, {succeed});
+      await axios.put(`http://192.168.0.104:3001/tasks/${id}`, {succeed});
       // Optionally, you can call getTask() here if needed
       regetTask();
 
@@ -31,7 +31,7 @@ export default function renderItem(): JSX.Element {
   // function for delete task
   const deleteItem = async (id: string) => {
     try {
-      await axios.delete(`http://192.168.0.101:3001/tasks/${id}`);
+      await axios.delete(`http://192.168.0.104:3001/tasks/${id}`);
       regetTask();
     } catch (error) {
       console.log(error);
