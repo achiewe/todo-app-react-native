@@ -1,5 +1,6 @@
 import {createSlice, PayloadAction} from '@reduxjs/toolkit';
 
+// redux state type
 export interface ValueProps {
   saveValue: string;
 }
