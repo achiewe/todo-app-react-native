@@ -3,16 +3,18 @@ import BouncyCheckbox from 'react-native-bouncy-checkbox';
 import useFetch from './useFetch';
 import axios from 'axios';
 import {setSaveValue} from '../features/SaveInputValue';
-import {useDispatch} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import {setEditingText} from '../features/EditingText';
 import {setEdit} from '../features/EditableInput';
+import {Rootstate} from '../features/store';
+import {setTodoArr} from '../features/TodoData';
 
 export default function renderItem(): JSX.Element {
-  const {saveInfo, regetTask, setSaveInfo} = useFetch(
-    'http://192.168.0.104:3001/tasks',
-  );
+  const {regetTask} = useFetch('http://192.168.0.104:3001/tasks');
 
   const dispatch = useDispatch();
+
+  const TodoArr = useSelector((store: Rootstate) => store.todoArr.todoArr);
 
   // function for change title of the item
   const propertyChange = async (id: string, succeed: boolean) => {
@@ -40,19 +42,19 @@ export default function renderItem(): JSX.Element {
 
   // function for edit the task
   const handleEdit = (id: string) => {
-    const editText = saveInfo.filter(item => item._id === id);
+    const editText = TodoArr.filter(item => item._id === id);
     dispatch(setSaveValue(editText[0].title));
     dispatch(setEditingText(true));
     dispatch(setEdit(editText));
-    const currentData = saveInfo.filter(item => item._id !== id);
-    setSaveInfo(currentData);
+    const currentData = TodoArr.filter(item => item._id !== id);
+    dispatch(setTodoArr(currentData));
   };
 
   return (
     <View style={styles.ListContainer}>
-      {saveInfo &&
-        Array.isArray(saveInfo) &&
-        saveInfo.map(item => (
+      {TodoArr &&
+        Array.isArray(TodoArr) &&
+        TodoArr.map(item => (
           <View style={styles.ListItem} key={item._id}>
             <View style={styles.ckeckView}>
               <BouncyCheckbox

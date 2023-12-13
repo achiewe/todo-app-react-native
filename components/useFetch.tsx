@@ -1,19 +1,17 @@
 import axios from 'axios';
-import {useEffect, useState} from 'react';
-import {dataProps} from '../types';
+import {useEffect} from 'react';
+import {useDispatch} from 'react-redux';
+import {setTodoArr} from '../features/TodoData';
 
 export default function useFetch(url: string) {
-  const [saveInfo, setSaveInfo] = useState<dataProps[] | []>([]);
-  const [progressFunc, setProgressFunc] = useState<boolean>(false);
-
   // function for update info and take data from backend and show in the frontend side
+  const dispatch = useDispatch();
   const getTask = async () => {
     try {
       const response = await axios.get(url);
 
       const data = response.data;
-      console.log(data);
-      setSaveInfo(data);
+      dispatch(setTodoArr(data));
     } catch (error) {
       console.error('Error fetching data:', error);
     }
@@ -23,12 +21,5 @@ export default function useFetch(url: string) {
     getTask();
   }, []);
 
-  useEffect(() => {
-    if (progressFunc) {
-      getTask();
-      setProgressFunc(false); // Reset the flag after fetching
-    }
-  }, [progressFunc]);
-
-  return {saveInfo, regetTask: () => setProgressFunc(true), setSaveInfo};
+  return {regetTask: getTask};
 }
