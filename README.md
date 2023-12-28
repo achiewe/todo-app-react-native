@@ -2,7 +2,7 @@ This is a new [**React Native**](https://reactnative.dev) project, bootstrapped 
 
 # Video
 
-[![Screencast](./assets/Screencast%20from%2012-28-2023%2018:49:35.webm)](./assets/Screencast%20from%2012-28-2023%2018:49:35.webm)
+[![Screencast](assets/Screencast%20from%2012-28-2023%2018:49:35.webm)](assets/Screencast%20from%2012-28-2023%2018:49:35.webm)
 
 # Getting Started
 
