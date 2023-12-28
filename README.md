@@ -1,8 +1,8 @@
 This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
 
-# Video
+# Screenshot
 
-[![Screencast](assets/Screencast%20from%2012-28-2023%2018:49:35.webm)](assets/Screencast%20from%2012-28-2023%2018:49:35.webm)
+![](./assets/Screenshot%20from%202023-12-28%2019-00-43.png)
 
 # Getting Started
 
