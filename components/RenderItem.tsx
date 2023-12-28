@@ -10,7 +10,7 @@ import {Rootstate} from '../features/store';
 import {setTodoArr} from '../features/TodoData';
 
 export default function renderItem(): JSX.Element {
-  const {regetTask} = useFetch('http://192.168.0.104:3001/tasks');
+  const {regetTask} = useFetch('http://212.58.120.180:3001/tasks');
 
   const dispatch = useDispatch();
 
@@ -19,7 +19,7 @@ export default function renderItem(): JSX.Element {
   // function for change title of the item
   const propertyChange = async (id: string, succeed: boolean) => {
     try {
-      await axios.put(`http://192.168.0.104:3001/tasks/${id}`, {succeed});
+      await axios.put(`http://212.58.120.180:3001/tasks/${id}`, {succeed});
       // Optionally, you can call getTask() here if needed
       regetTask();
 
@@ -33,7 +33,7 @@ export default function renderItem(): JSX.Element {
   // function for delete task
   const deleteItem = async (id: string) => {
     try {
-      await axios.delete(`http://192.168.0.104:3001/tasks/${id}`);
+      await axios.delete(`http://212.58.120.180:3001/tasks/${id}`);
       regetTask();
     } catch (error) {
       console.log(error);

@@ -20,7 +20,7 @@ export default function MainTodo(): JSX.Element {
   const dispatch = useDispatch();
 
   // take regretTask from useFetch to use it here
-  const {regetTask} = useFetch('http://192.168.0.104:3001/tasks');
+  const {regetTask} = useFetch('http://212.58.120.180:3001/tasks');
 
   const editingText = useSelector(
     (store: Rootstate) => store.editingText.editingText,
@@ -37,7 +37,7 @@ export default function MainTodo(): JSX.Element {
     if (editingText) {
       try {
         await axios.put(
-          `http://192.168.0.104:3001/tasks/title/${editableInput[0]?._id}`,
+          `http://212.58.120.180:3001/tasks/title/${editableInput[0]?._id}`,
           {title},
         );
         // Optionally, you can call getTask() here if needed
@@ -51,7 +51,7 @@ export default function MainTodo(): JSX.Element {
     } else {
       try {
         const response = await axios.post<dataProps[]>(
-          'http://192.168.0.104:3001/postTask',
+          'http://212.58.120.180:3001/postTask',
           {
             title: inputValue,
             succeed: false,
